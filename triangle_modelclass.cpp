@@ -43,22 +43,22 @@ bool TriangleModelClass::InitializeBuffers(ID3D11Device* device)
 	// Load the vertex array with data.
 	vertices[0].position = D3DXVECTOR3(-1.0f,-1.0f,-1.0f);
 	vertices[1].position = D3DXVECTOR3(-1.0f, 1.0f,-1.0f);
-	vertices[2].position = D3DXVECTOR3( 1.0f, 1.0f,-1.0f); 
+	vertices[2].position = D3DXVECTOR3(1.0f, 1.0f,-1.0f); 
 	vertices[3].position = D3DXVECTOR3(1.0f,-1.0f,-1.0f);
 
 	vertices[4].position = D3DXVECTOR3(-1.0f,-1.0f,-2.0f);
 	vertices[5].position = D3DXVECTOR3(-1.0f, 1.0f,-2.0f);
-	vertices[6].position = D3DXVECTOR3( 1.0f, 1.0f,-2.0f); 
+	vertices[6].position = D3DXVECTOR3(1.0f, 1.0f,-2.0f); 
 	vertices[7].position = D3DXVECTOR3(1.0f,-1.0f,-2.0f);
 
 	vertices[8].position = D3DXVECTOR3(-1.0f,-1.0f,-3.0f);
 	vertices[9].position = D3DXVECTOR3(-1.0f, 1.0f,-3.0f);
-	vertices[10].position = D3DXVECTOR3( 1.0f, 1.0f,-3.0f); 
+	vertices[10].position = D3DXVECTOR3(1.0f, 1.0f,-3.0f); 
 	vertices[11].position = D3DXVECTOR3(1.0f,-1.0f,-3.0f);
 
 	vertices[12].position = D3DXVECTOR3(-1.0f,-1.0f, 1.0f);
 	vertices[13].position = D3DXVECTOR3(-1.0f, 1.0f, 1.0f);
-	vertices[14].position = D3DXVECTOR3( 1.0f, 1.0f, 1.0f); 
+	vertices[14].position = D3DXVECTOR3(1.0f, 1.0f, 1.0f); 
 	vertices[15].position = D3DXVECTOR3(1.0f,-1.0f, 1.0f);
 
 	vertices[16].position = D3DXVECTOR3(-1.0f,-1.0f, 2.0f);
@@ -68,12 +68,24 @@ bool TriangleModelClass::InitializeBuffers(ID3D11Device* device)
 
 	vertices[20].position = D3DXVECTOR3(-1.0f,-1.0f, 3.0f);
 	vertices[21].position = D3DXVECTOR3(-1.0f, 1.0f, 3.0f);
-	vertices[22].position = D3DXVECTOR3( 1.0f, 1.0f, 3.0f); 
+	vertices[22].position = D3DXVECTOR3(1.0f, 1.0f, 3.0f); 
 	vertices[23].position = D3DXVECTOR3(1.0f,-1.0f, 3.0f);
 
+	//roof top vertice
 	vertices[24].position = D3DXVECTOR3(0.0f, 3.0f, 0.0f);
 
+	//ground vertices
+	vertices[25].position = D3DXVECTOR3(5.0f, -1.0f, 5.0f);
+	vertices[26].position = D3DXVECTOR3(-5.0f, -1.0f, 5.0f);
+	vertices[27].position = D3DXVECTOR3(5.0f, -1.0f, -5.0f);
+	vertices[28].position = D3DXVECTOR3(-5.0f, -1.0f, -5.0f);
+
 	//roof colors
+	vertices[25].color = D3DXVECTOR4(0.150f, 0.125f, 0.117f, 1.0f);
+	vertices[26].color = D3DXVECTOR4(0.150f, 0.125f, 0.117f, 1.0f);
+	vertices[27].color = D3DXVECTOR4(0.150f, 0.125f, 0.117f, 1.0f);
+	vertices[28].color = D3DXVECTOR4(0.150f, 0.125f, 0.117f, 1.0f);
+
 	vertices[24].color = D3DXVECTOR4(1.0f, 2.0f, 0.0f, 12.0f);
 	vertices[10].color = D3DXVECTOR4(1.0f, 0.0f, 16.0f, 1.0f);
 	vertices[22].color = D3DXVECTOR4(1.0f, 2.0f, 0.0f, 0.0f);
@@ -208,16 +220,24 @@ bool TriangleModelClass::InitializeBuffers(ID3D11Device* device)
 	//wall
 	indices[60] = 0;  
 	indices[61] = 1;  
-	indices[62] = 4;
-	indices[63] = 4;  
+	indices[62] = 8;
+	indices[63] = 8;  
 	indices[64] = 1;  
-	indices[65] = 5;
+	indices[65] = 9;
 	indices[66] = 2;  
 	indices[67] = 6;  
 	indices[68] = 3;
 	indices[69] = 3;  
 	indices[70] = 6;  
 	indices[71] = 7;
+
+	//ground
+	indices[72] = 25;  
+	indices[73] = 26;
+	indices[74] = 27;
+	indices[75] = 27;  
+	indices[76] = 26;
+	indices[77] = 28; 
 
 	// Set up the description of the static index buffer.
     indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
