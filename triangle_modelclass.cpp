@@ -1594,13 +1594,13 @@ bool TriangleModelClass::InitializeBuffers(ID3D11Device* device)
 void TriangleModelClass::Render(ID3D11DeviceContext* deviceContext)
 {
 	//Update the world transformations
-	UINT  iTime  = timeGetTime() % 2000;
-	float fAngle = iTime * 2 * D3DX_PI / 2000.0f;
-	D3DXMATRIX rotMatrix;
-	D3DXMatrixRotationY(&rotMatrix, fAngle );
-	SetModelWorldMatrix(rotMatrix);
-	//SetModelWorldMatrix(XMMatrixIdentity());
+	UINT  iTime  = timeGetTime() % 4000;
+	float fAngle = iTime * 4 * D3DX_PI / 4000.0f;
+	D3DXMATRIX transMatrix;
 
+	D3DXMatrixTranslation(&transMatrix, fAngle, 0.0f, 0.0f);
+	SetModelWorldMatrix(transMatrix);
+	
 	// Put the vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	RenderBuffers(deviceContext);
 
